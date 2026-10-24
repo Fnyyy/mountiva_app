@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "tertiary-fixed-dim": "#ffb959", "surface-container-low": "#f1f3ff", "primary-container": "#1b4332", "secondary-fixed": "#a1f4c8", "surface": "#f9f9ff", "error": "#ba1a1a", "on-error": "#ffffff", "on-primary": "#ffffff", "on-surface": "#161c27", "primary": "#012d1d", "on-primary-container": "#86af99", "inverse-surface": "#2a303d", "on-error-container": "#93000a", "tertiary-container": "#553500", "surface-bright": "#f9f9ff", "outline-variant": "#c1c8c2", "secondary-fixed-dim": "#86d7ad", "on-primary-fixed": "#002114", "secondary": "#116c4a", "surface-container-lowest": "#ffffff", "tertiary-fixed": "#ffddb6", "surface-container-high": "#e3e8f9", "on-tertiary-container": "#dd9832", "surface-container-highest": "#dde2f3", "secondary-container": "#a1f4c8", "on-secondary-container": "#1b724f", "error-container": "#ffdad6", "outline": "#717973", "primary-fixed-dim": "#a5d0b9", "on-secondary-fixed": "#002113", "on-secondary-fixed-variant": "#005236", "on-tertiary-fixed": "#2a1800", "inverse-primary": "#a5d0b9", "tertiary": "#382100", "on-surface-variant": "#414844", "surface-dim": "#d4daea", "on-background": "#161c27", "on-tertiary": "#ffffff", "surface-container": "#e8eeff", "background": "#f9f9ff", "on-tertiary-fixed-variant": "#643f00", "surface-variant": "#dde2f3", "on-secondary": "#ffffff", "primary-fixed": "#c1ecd4", "surface-tint": "#3f6653", "on-primary-fixed-variant": "#274e3d", "inverse-on-surface": "#ecf0ff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-sm": "0.5rem", "margin-tablet": "2rem", "space-xl": "2rem", "space-lg": "1.5rem", "margin": "1rem", "space-md": "1rem", "gutter": "1rem", "margin-desktop": "3rem", "space-xs": "0.25rem", "gutter-tablet": "1.5rem" }, fontFamily: { "headline-lg": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "stat-counter": ["Inter"], "label-md": ["Inter"], "label-lg": ["Inter"], "body-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-sm": ["Inter"], "display-lg-mobile": ["Plus Jakarta Sans"] }, fontSize: { "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "stat-counter": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }], "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(27,67,50,0.06)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><img alt="MounTiva Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo0zEJcQ44ov0cNNLMHLAiAJyFzCfN6P4fHXV_ylpevwZoCXm-DCNEDvgR813SmTUT64-8C6OEM3ySv7JSuFaXWk8iHfA7e8lb1Z6nK6ku8m1yQ0xQEdsCUXZrzCPKgIf2H6Ts9uJYoV1IDipe67jmzzdUIPLWBRI2zZ9t9bNv1TAe0MWmHl1NkSeBgQvuh1PPDq_pdDUNmlEYYh-d0P1b_pCKLw11CV3d7G3JbGQdhYoM5JBDqh2DGw"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">MounTiva</span><span class="font-label-sm text-label-sm text-secondary font-bold tracking-wider uppercase">Eco-Outdoor</span></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-1.5 bg-secondary-container/60 px-2.5 py-1 rounded-full shadow-[0_2px_6px_rgba(27,67,50,0.06)]"><span class="material-symbols-outlined text-secondary text-[17px]">eco</span><span class="font-label-md text-label-md text-on-secondary-container font-bold">2,450 Pts</span></div><button aria-label="Notifikasi" class="relative flex items-center justify-center w-11 h-11 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 bg-tertiary-fixed-dim rounded-full ring-2 ring-surface"></span></button><a class="flex items-center justify-center" data-path="profil-petualang" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-secondary/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfzVrCHDxErXU2ed2sCiavdJ1XDJu9xDS1QrvBZYrxVwrOOL9sa-owGMvoLBKq3Ps0ijgrTrLcU_ZDWAbBdRDaGGOxJsNe8AZci9zWTdvZBYRpN6JOdZKebdqEJktUhNmR-M8gWSIRDqzRv16-_bdnyBR68CJGYz1z8_r1KM1WALQcY-bVR0XeD506S1JIVhdZk3sC_Kcj1tvgCAFiqyVnEqScGzNv_DZZ084pwWN3HdxZhlgdIOn5iw"/></a></div></div></header><main class="flex flex-col relative w-full pt-16 pb-28 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin space-y-space-lg">
+<!-- 1. GREETING & RANGER IDENTITY -->
+<section class="flex items-center justify-between pt-space-xs">
+<div class="flex flex-col min-w-0 pr-space-sm">
+<div class="inline-flex items-center gap-1.5 self-start px-2.5 py-1 rounded-full bg-secondary-container/70 mb-space-xs shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-md text-label-md text-on-secondary-container">Ranger Hijau • Lv. 4</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">Halo, Rian!</h1>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Siap mendaki bertanggung jawab?</p>
+</div>
+<div class="relative flex-shrink-0">
+<div class="w-14 h-14 rounded-2xl bg-secondary-container/50 flex items-center justify-center p-1 shadow-sm">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Stylized 3D digital illustration of a cheerful young Indonesian male hiker wearing a green breathable outdoor jacket and trail hat, warm morning sunlight, vibrant outdoor aesthetic, high fidelity, 8k" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfGvvqsF-K9nCxQhiUOr52A3CGRT6kbk-twk4L8sNft0795J6jIXHy0qK5dMeUz2OgpIqAtwBu1unhr60TMbqHW1dY3g5gxflFdP2VzzdTK8eI8EUFZgO7kE99XA8dH5CxMg3SH9Q4jq7cj5fZzoiT1TiyRMC28pDW9K-JiybDIsQfb0oqFxFDDzye2RnLkOYh30_PblwPIzuedCU6-22uwKdSuOItkmXFTL9NUg9voU_PotYmU6oIRQ"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-tertiary-fixed-dim flex items-center justify-center text-on-tertiary-fixed shadow-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">award_star</span>
+</div>
+</div>
+</section>
+<!-- 2. GAMIFIED ECO-TRACKER HERO BANNER -->
+<section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary-container to-secondary text-on-primary p-space-md shadow-xl">
+<!-- Ambient organic wave backdrop decoration -->
+<div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-secondary-fixed/10 blur-2xl pointer-events-none"></div>
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col space-y-space-md">
+<!-- Header row of tracker -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface/10 backdrop-blur-md flex items-center justify-center text-secondary-fixed">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">delete_sweep</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-wider block">Total Sampah Diturunkan</span>
+<div class="flex items-baseline gap-1.5">
+<span class="font-stat-counter text-stat-counter text-on-primary">14.8</span>
+<span class="font-label-md text-label-md text-secondary-fixed-dim">/ 20.0 kg</span>
+</div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full bg-surface/15 backdrop-blur-md text-secondary-fixed font-bold tracking-wide">
+          74% Target
+        </span>
+</div>
+<!-- Segmented Tactile Progress Bar -->
+<div class="w-full space-y-1.5">
+<div class="h-3 w-full bg-black/25 rounded-full overflow-hidden p-0.5 backdrop-blur-sm">
+<div class="h-full bg-gradient-to-r from-secondary-fixed-dim to-secondary-fixed rounded-full transition-all duration-700 ease-out" style="width: 74%;"></div>
+</div>
+<div class="flex justify-between items-center text-on-primary-container">
+<span class="font-body-sm text-body-sm">Target Pekan Ini: 20 kg</span>
+<span class="font-label-sm text-label-sm font-semibold text-secondary-fixed">Sisa 5.2 kg lagi!</span>
+</div>
+</div>
+<!-- Metrics Dual Grid & Poin Claim -->
+<div class="pt-space-xs grid grid-cols-2 gap-space-sm">
+<div class="rounded-xl bg-surface/10 backdrop-blur-md p-2.5 flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-lg bg-secondary/30 flex items-center justify-center text-secondary-fixed flex-shrink-0">
+<span class="material-symbols-outlined text-[17px]">eco</span>
+</div>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-primary-container truncate">CO2e Dicegah</p>
+<p class="font-label-lg text-label-lg text-on-primary font-bold">32.4 kg</p>
+</div>
+</div>
+<div class="rounded-xl bg-surface/10 backdrop-blur-md p-2.5 flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-lg bg-tertiary-fixed-dim/30 flex items-center justify-center text-tertiary-fixed flex-shrink-0">
+<span class="material-symbols-outlined text-[17px]">local_fire_department</span>
+</div>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-primary-container truncate">Kalori Terbakar</p>
+<p class="font-label-lg text-label-lg text-on-primary font-bold">4,820 kkal</p>
+</div>
+</div>
+</div>
+<!-- Redeem Quick Action Footer -->
+<div class="pt-space-xs flex items-center justify-between gap-space-sm bg-surface-container-lowest/10 backdrop-blur-md p-2.5 rounded-xl">
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed-dim text-on-tertiary-fixed flex items-center justify-center font-bold flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="min-w-0">
+<p class="font-label-md text-label-md text-on-primary font-semibold truncate">2.450 Poin Siap Digunakan</p>
+<p class="font-body-sm text-body-sm text-on-primary-container truncate">Bisa ditukar voucher sewa tenda</p>
+</div>
+</div>
+<button class="flex-shrink-0 px-3.5 py-2 rounded-lg bg-tertiary-fixed-dim text-on-tertiary-fixed font-label-md text-label-md font-bold shadow-md active:scale-95 transition-transform flex items-center gap-1" id="btn-tukar-poin">
+<span>Tukar</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 3. ACTIVE QUEST / MISI KONSERVASI -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">flag</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Misi Konservasi</h2>
+</div>
+<a class="font-label-md text-label-md text-secondary hover:underline flex items-center" href="#">
+        Lihat Semua
+        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+<!-- Active Quest Card -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-md shadow-[0_4px_16px_rgba(27,67,50,0.06)] relative overflow-hidden">
+<div class="flex items-start gap-space-sm">
+<div class="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="High contrast close up photo of majestic Mount Rinjani volcanic crater rim and turquoise Segara Anak lake under dramatic morning skies, lush pine slope, ultra wide angle outdoor photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxonRlbmZaHIvTE6LnNFHQP91IcPE_T1AUoAZxnjW6U1xUhxgcyCDffoQJs6Ms9PWwHvJxNLiwWY4_hG6YQOGVVk4M2WZuZ4oUR-A4ZGCFoGT-gMGsts-wCtYeZulrk_iYuLo7cYg6AY9jmGxyFVyHjNbptIVWlGbsTWUJGFJ0TDX7a4nQet8Z-L6x2Hg8obRNMhjkF2ik0jcdcFlUTpmQ0RCGBZvLi-vMVa1z9RMQUjLZsSGh44ThbQ"/>
+<div class="absolute inset-0 bg-primary/20"></div>
+<span class="absolute bottom-1 right-1 material-symbols-outlined text-on-primary text-[14px]">landscape</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">Tantangan Aktif</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">schedule</span> 4 Hari lagi
+            </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-snug truncate">Misi Clean-Up Rinjani 2025</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 line-clamp-1">Bawa turun minimal 3 kg sampah anorganik ke pos resmi Sembalun/Senaru.</p>
+</div>
+</div>
+<!-- Quest Progress and Reward Strip -->
+<div class="mt-space-md pt-space-sm bg-surface-container-low rounded-xl p-3 flex flex-col space-y-2">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">scale</span>
+            Progres: 1.8 / 3.0 kg
+          </span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">60%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 60%;"></div>
+</div>
+<div class="flex items-center justify-between pt-1 text-on-surface-variant">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="font-label-sm text-label-sm text-tertiary-container font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">stars</span> +500 Pts
+            </span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-primary truncate flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">shield</span> Badge Segara Anak
+            </span>
+</div>
+<button class="font-label-sm text-label-sm text-secondary font-bold hover:text-primary transition-colors flex-shrink-0">
+            Detail
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. QUICK ACTION SHORTCUTS (4 Grid) -->
+<section class="space-y-space-sm">
+<h2 class="font-headline-sm text-headline-sm text-primary">Aksi Cepat Trail</h2>
+<div class="grid grid-cols-4 gap-2.5">
+<!-- Shortcut 1: Scan Pos QR -->
+<a class="group flex flex-col items-center text-center p-2.5 rounded-2xl bg-surface-container-lowest shadow-[0_3px_12px_rgba(27,67,50,0.04)] active:scale-95 transition-all" data-path="checkpoint" href="#">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container group-hover:bg-secondary group-hover:text-on-secondary transition-colors mb-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">qr_code_scanner</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold leading-tight line-clamp-2">Scan Pos QR</span>
+</a>
+<!-- Shortcut 2: Sewa Alat -->
+<a class="group flex flex-col items-center text-center p-2.5 rounded-2xl bg-surface-container-lowest shadow-[0_3px_12px_rgba(27,67,50,0.04)] active:scale-95 transition-all" data-path="pasar-alat" href="#">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors mb-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">camping</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold leading-tight line-clamp-2">Sewa Tenda</span>
+</a>
+<!-- Shortcut 3: Cek Kuota Jalur -->
+<a class="group flex flex-col items-center text-center p-2.5 rounded-2xl bg-surface-container-lowest shadow-[0_3px_12px_rgba(27,67,50,0.04)] active:scale-95 transition-all" data-path="gunung-&amp;-trip" href="#">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed/60 flex items-center justify-center text-tertiary-container group-hover:bg-tertiary-fixed-dim transition-colors mb-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">confirmation_number</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold leading-tight line-clamp-2">Cek Kuota</span>
+</a>
+<!-- Shortcut 4: Open Trip -->
+<a class="group flex flex-col items-center text-center p-2.5 rounded-2xl bg-surface-container-lowest shadow-[0_3px_12px_rgba(27,67,50,0.04)] active:scale-95 transition-all" data-path="gunung-&amp;-trip" href="#">
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed/50 flex items-center justify-center text-on-secondary-fixed-variant group-hover:bg-secondary-fixed transition-colors mb-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">group_add</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold leading-tight line-clamp-2">Open Trip</span>
+</a>
+</div>
+</section>
+<!-- 5. UPCOMING HIKING / REGISTERED OPEN TRIP -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">hiking</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Pendakian Terdaftar</h2>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed font-bold">1 Tiket Aktif</span>
+</div>
+<!-- Hiking Trip Card -->
+<div class="rounded-2xl bg-surface-container-lowest overflow-hidden shadow-[0_4px_20px_rgba(27,67,50,0.07)] flex flex-col">
+<!-- Card Image & Floating Badges -->
+<div class="relative h-36 w-full">
+<img class="w-full h-full object-cover" data-alt="Panoramic landscape of Mount Prau Dieng plateau sunrise with golden sunrays kissing green rolling hills and wildflowers, tents pitched neatly in background, clean crisp mountain air photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKb0W81QeGv5oUyW_Rpp9gFyqNZZxJU2WfZirIP0OUT-jzMyvJ-af0_oGpINueQegKn1YSC2Z-kAcRHCdqrWR5kKdzU-tcvu50dEb7M9skIHQChEYN9BtMwUgiNZnD8KIn6a5otaLWEhE6MBUQIlvz8uEL1WxqHbiS4oBgOZBJthcLGRyQQULniCb39ajsOWx98Y6uUMfn6K-KXzVjL8zWxnkbRUADXpEOv3OQReLFIkJ8V_xgu2zkCQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+<div class="absolute top-3 left-3 flex items-center gap-1.5">
+<span class="px-2.5 py-1 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">eco</span> Eco-Trip Resmi
+          </span>
+</div>
+<div class="absolute top-3 right-3 bg-surface/90 backdrop-blur-md px-2.5 py-1 rounded-lg text-primary font-label-sm text-label-sm font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[14px]">event</span> 28 - 29 Okt
+        </div>
+<div class="absolute bottom-2.5 left-3 right-3">
+<h3 class="font-headline-sm text-headline-sm text-on-primary drop-shadow truncate">Clean-Up Hike Mt. Prau</h3>
+<p class="font-body-sm text-body-sm text-secondary-fixed flex items-center gap-1 drop-shadow">
+<span class="material-symbols-outlined text-[14px]">location_on</span> via Patakbanteng, Dieng (2.565 mdpl)
+          </p>
+</div>
+</div>
+<!-- Card Content Detail -->
+<div class="p-space-md space-y-3">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">verified_user</span>
+<span>Guide APGI Tersertifikasi</span>
+</div>
+<div class="flex items-center gap-1 font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">groups</span>
+<span>8 / 10 Peserta</span>
+</div>
+</div>
+<!-- Participants Avatar Stack & Action -->
+<div class="pt-2 flex items-center justify-between border-t-0">
+<div class="flex items-center -space-x-2 overflow-hidden py-1">
+<img class="inline-block h-7 w-7 rounded-full object-cover ring-2 ring-surface-container-lowest" data-alt="Portrait avatar of a smiling Indonesian woman with backpack straps outdoor smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHKE80IOY8wnlADTGg5dslJyZvgcobgxJmEMhKaDSs2nrwPgKoi-nzDwDXWmCmJIHLp9Ci74oMThHJ-tVFkQWzGWuf9c-ZCv7XWT9Id0pz_U1PajsKxZm-q32Iq_8M1Ajk9ldXgxBhNOXQX8rP-GcJFdhLv00-fDVF0WkXrhrb8oGNTMujCGXaCiosXFOZyHcikC-eZfTvEKxdLHPwyn8NTFKhzcUZBS2Z57atqI92Mo5hZjx2d1ZYDw"/>
+<img class="inline-block h-7 w-7 rounded-full object-cover ring-2 ring-surface-container-lowest" data-alt="Portrait avatar of young mountaineer man wearing orange bandana outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN_c86ad3iniuS7SXYhEg5vk_eTNdPP9fYMZF4FcMcijoKdGAfZDjJuqpWHO5p0ccR3B2hgmLcUFeD3RIN904mbY_fvLV70nqFesm2NM-m11hilDa_l19JvHPcS-vptF8VBmN6apGxdOP92t-lZt5wNORVkXmjgoubTeWaR9DtEmTy7ETQ7vaKFOswN6xKthgXzB5_0siYDQ1_JPXJhpmS20B5RC8fz-FL_aZ25T-TpeM41E6v_Hz45A"/>
+<img class="inline-block h-7 w-7 rounded-full object-cover ring-2 ring-surface-container-lowest" data-alt="Portrait avatar of female hiker with headlamp at sunset campsite" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTSxTKuYh9-amdONwpzYy0BsbwDtJmteLG8KwP2Fjet1zGuy4GljOmRt8RVBfDiccOggvys0lH5jUSE5-PMVel1yCFdyxyVc8OAgiZXrYdCmizE4FBEOUxUw8TkyAHHmeNyIrHkLJmZz7FkcjJtcvCmAYXu0JDO6-Jc8JJQR5GZrWzJ1w4GGaxOP7HqMLLTotn7P2VQ5Hn4aqSQh2TmGA_FkkowqHrl4NIZ3MyvklapoOEDRN7Mhq9lQ"/>
+<div class="h-7 w-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-sm text-label-sm font-bold ring-2 ring-surface-container-lowest">
+              +5
+            </div>
+</div>
+<button class="px-4 py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container transition-colors shadow-sm flex items-center gap-1 active:scale-95">
+<span>Buka E-Simaksi</span>
+<span class="material-symbols-outlined text-[16px]">qr_code</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. TIPS & EDUKASI SINGKAT (Leave No Trace) -->
+<section class="space-y-space-sm pb-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">school</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Edukasi Rimba</h2>
+</div>
+<a class="font-label-md text-label-md text-secondary hover:underline" href="#">Semua Tips</a>
+</div>
+<!-- Educational Carousel / Card -->
+<div class="rounded-2xl bg-surface-container-low p-space-md shadow-[0_2px_12px_rgba(27,67,50,0.04)] flex items-center gap-space-md relative overflow-hidden">
+<div class="flex-1 min-w-0">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold mb-1.5">
+<span class="material-symbols-outlined text-[12px]">lightbulb</span> Wajib Paham
+        </div>
+<h3 class="font-headline-sm text-headline-sm text-primary leading-tight">Etika Leave No Trace: 7 Prinsip Wajib Pendaki Gen-Z</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">Jangan tinggalkan apapun selain jejak kaki, jangan ambil apapun selain foto estetik.</p>
+<div class="mt-2.5 flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-secondary font-bold flex items-center gap-0.5">
+            Baca 3 Menit <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</div>
+<div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Artistic botanical flat-lay illustration of campfire footprint, biodegradable canteen, compass, and green pine cones on mossy wooden texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD61Tw30c4_-FHf_ij4ztt0FD-PKnSaK_WEUmj8eyiMsxzqWVdLArnVaYJw-ElTeWVzuQp1oiXvQtZpPUSiqMbCezeZ2K80d8cUM4-YjWZNFkqN7X-wKyOUG8T-tJSww7g1iVbVpWnRGbJh1vHPBbAPJEH68HyzEhWhZxAF-jSfKKo6oKqLUd7cwq-EzW6D0PXVyBrENunNbTcv52a2q5ma299PtevCNAcjnAFZgU6IWaueaYgEptxQOA"/>
+</div>
+</div>
+</section>
+<!-- REWARD TOAST DIALOG (Micro-interaction mockup) -->
+<div class="fixed bottom-24 inset-x-margin max-w-sm mx-auto bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-2xl shadow-2xl flex items-center justify-between gap-3 transform translate-y-32 opacity-0 pointer-events-none transition-all duration-300 z-40" id="toast-reward">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[24px]" style="font-variation-settings: 'FILL' 1;">card_giftcard</span>
+<div class="min-w-0">
+<p class="font-label-md text-label-md font-bold truncate">Voucher Sewa Siap Diklaim!</p>
+<p class="font-body-sm text-body-sm text-outline-variant truncate">Potongan Rp50.000 untuk carrier &amp; tenda</p>
+</div>
+</div>
+<button class="px-2.5 py-1 rounded-lg bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold flex-shrink-0" id="btn-close-toast">
+      Gunakan
+    </button>
+</div>
+</div>
+<script>
+  // Simple delightful micro-interaction for reward button
+  (function() {
+    const btnTukar = document.getElementById('btn-tukar-poin');
+    const toast = document.getElementById('toast-reward');
+    const btnClose = document.getElementById('btn-close-toast');
+
+    if (btnTukar && toast && btnClose) {
+      btnTukar.addEventListener('click', function(e) {
+        e.preventDefault();
+        toast.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+        toast.classList.add('translate-y-0', 'opacity-100');
+
+        setTimeout(function() {
+          toast.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+          toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 4500);
+      });
+
+      btnClose.addEventListener('click', function() {
+        toast.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(27,67,50,0.06)]" data-active-classes="text-secondary font-semibold"><div class="flex justify-around items-center h-20 px-space-xs max-w-md mx-auto"><a aria-current="page" class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-14 transition-colors text-secondary font-semibold" data-path="beranda" href="#"><span class="material-symbols-outlined text-[24px]">forest</span><span class="font-label-sm text-label-sm">Beranda</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-14 text-on-surface-variant transition-colors" data-path="checkpoint" href="#"><span class="material-symbols-outlined text-[24px]">qr_code_scanner</span><span class="font-label-sm text-label-sm">Checkpoint</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-14 text-on-surface-variant transition-colors" data-path="pasar-alat" href="#"><span class="material-symbols-outlined text-[24px]">swap_driving_apps_wheel</span><span class="font-label-sm text-label-sm">Pasar Alat</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-14 text-on-surface-variant transition-colors" data-path="gunung-&amp;-trip" href="#"><span class="material-symbols-outlined text-[24px]">landscape</span><span class="font-label-sm text-label-sm">Gunung &amp; Trip</span></a></div></nav></body></html>

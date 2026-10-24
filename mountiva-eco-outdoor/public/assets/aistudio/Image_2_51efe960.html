@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "tertiary-fixed-dim": "#ffb959", "surface-container-low": "#f1f3ff", "primary-container": "#1b4332", "secondary-fixed": "#a1f4c8", "surface": "#f9f9ff", "error": "#ba1a1a", "on-error": "#ffffff", "on-primary": "#ffffff", "on-surface": "#161c27", "primary": "#012d1d", "on-primary-container": "#86af99", "inverse-surface": "#2a303d", "on-error-container": "#93000a", "tertiary-container": "#553500", "surface-bright": "#f9f9ff", "outline-variant": "#c1c8c2", "secondary-fixed-dim": "#86d7ad", "on-primary-fixed": "#002114", "secondary": "#116c4a", "surface-container-lowest": "#ffffff", "tertiary-fixed": "#ffddb6", "surface-container-high": "#e3e8f9", "on-tertiary-container": "#dd9832", "surface-container-highest": "#dde2f3", "secondary-container": "#a1f4c8", "on-secondary-container": "#1b724f", "error-container": "#ffdad6", "outline": "#717973", "primary-fixed-dim": "#a5d0b9", "on-secondary-fixed": "#002113", "on-secondary-fixed-variant": "#005236", "on-tertiary-fixed": "#2a1800", "inverse-primary": "#a5d0b9", "tertiary": "#382100", "on-surface-variant": "#414844", "surface-dim": "#d4daea", "on-background": "#161c27", "on-tertiary": "#ffffff", "surface-container": "#e8eeff", "background": "#f9f9ff", "on-tertiary-fixed-variant": "#643f00", "surface-variant": "#dde2f3", "on-secondary": "#ffffff", "primary-fixed": "#c1ecd4", "surface-tint": "#3f6653", "on-primary-fixed-variant": "#274e3d", "inverse-on-surface": "#ecf0ff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-sm": "0.5rem", "margin-tablet": "2rem", "space-xl": "2rem", "space-lg": "1.5rem", "margin": "1rem", "space-md": "1rem", "gutter": "1rem", "margin-desktop": "3rem", "space-xs": "0.25rem", "gutter-tablet": "1.5rem" }, fontFamily: { "headline-lg": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "stat-counter": ["Inter"], "label-md": ["Inter"], "label-lg": ["Inter"], "body-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-sm": ["Inter"], "display-lg-mobile": ["Plus Jakarta Sans"] }, fontSize: { "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "stat-counter": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }], "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(27,67,50,0.06)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><img alt="MounTiva Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo0zEJcQ44ov0cNNLMHLAiAJyFzCfN6P4fHXV_ylpevwZoCXm-DCNEDvgR813SmTUT64-8C6OEM3ySv7JSuFaXWk8iHfA7e8lb1Z6nK6ku8m1yQ0xQEdsCUXZrzCPKgIf2H6Ts9uJYoV1IDipe67jmzzdUIPLWBRI2zZ9t9bNv1TAe0MWmHl1NkSeBgQvuh1PPDq_pdDUNmlEYYh-d0P1b_pCKLw11CV3d7G3JbGQdhYoM5JBDqh2DGw"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">MounTiva</span><span class="font-label-sm text-label-sm text-secondary font-bold tracking-wider uppercase">Eco-Outdoor</span></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-1.5 bg-secondary-container/60 px-2.5 py-1 rounded-full shadow-[0_2px_6px_rgba(27,67,50,0.06)]"><span class="material-symbols-outlined text-secondary text-[17px]">eco</span><span class="font-label-md text-label-md text-on-secondary-container font-bold">2,450 Pts</span></div><button aria-label="Notifikasi" class="relative flex items-center justify-center w-11 h-11 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 bg-tertiary-fixed-dim rounded-full ring-2 ring-surface"></span></button><a class="flex items-center justify-center" data-path="profil-petualang" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-secondary/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfzVrCHDxErXU2ed2sCiavdJ1XDJu9xDS1QrvBZYrxVwrOOL9sa-owGMvoLBKq3Ps0ijgrTrLcU_ZDWAbBdRDaGGOxJsNe8AZci9zWTdvZBYRpN6JOdZKebdqEJktUhNmR-M8gWSIRDqzRv16-_bdnyBR68CJGYz1z8_r1KM1WALQcY-bVR0XeD506S1JIVhdZk3sC_Kcj1tvgCAFiqyVnEqScGzNv_DZZ084pwWN3HdxZhlgdIOn5iw"/></a></div></div></header><main class="flex flex-col relative w-full pt-16 pb-28 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="px-margin pt-space-md pb-space-lg flex flex-col gap-space-lg">
+<!-- Top Active Checkpoint Status Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-md flex flex-col gap-space-sm relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-28 h-28 bg-secondary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-1.5 bg-primary-container px-2.5 py-1 rounded-full text-on-primary">
+<span class="material-symbols-outlined text-[15px] text-secondary-fixed" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm tracking-wide">Pos Resmi Terverifikasi Balai TN</span>
+</div>
+<div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold bg-secondary-container/50 px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span>Sinyal GPS Aktif</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm mt-0.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">pin_drop</span>
+</div>
+<div class="min-w-0 flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-primary truncate leading-tight">Pos 3 Sembalun</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Taman Nasional Gunung Rinjani, Lombok</p>
+</div>
+</div>
+</div>
+<!-- Live Scanner Action Card -->
+<div class="bg-primary rounded-xl p-space-md shadow-xl text-on-primary flex flex-col items-center gap-space-md relative overflow-hidden">
+<div class="w-full flex items-center justify-between z-10">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]">qr_code_scanner</span>
+<span class="font-label-lg text-label-lg text-primary-fixed">Eco-Scanner Otomatis</span>
+</div>
+<span class="font-label-sm text-label-sm bg-primary-container text-secondary-fixed-dim px-2 py-0.5 rounded-full">Camera Feed Ready</span>
+</div>
+<!-- Viewfinder Target Area -->
+<div class="relative w-64 h-64 rounded-xl bg-surface-container-lowest/5 backdrop-blur-sm flex items-center justify-center overflow-hidden my-space-xs">
+<!-- Animated Corner Brackets -->
+<div class="absolute top-2 left-2 w-6 h-6 border-t-4 border-l-4 border-secondary-fixed rounded-tl-lg"></div>
+<div class="absolute top-2 right-2 w-6 h-6 border-t-4 border-r-4 border-secondary-fixed rounded-tr-lg"></div>
+<div class="absolute bottom-2 left-2 w-6 h-6 border-b-4 border-l-4 border-secondary-fixed rounded-bl-lg"></div>
+<div class="absolute bottom-2 right-2 w-6 h-6 border-b-4 border-r-4 border-secondary-fixed rounded-br-lg"></div>
+<!-- Laser Scanner Bar Animation -->
+<div class="absolute inset-x-3 h-0.5 bg-gradient-to-r from-transparent via-tertiary-fixed-dim to-transparent shadow-[0_0_12px_#ffb959] transition-all duration-75" id="scan-laser"></div>
+<!-- Target Grid Silhouette -->
+<div class="w-40 h-40 rounded-lg bg-surface-container-lowest/10 flex flex-col items-center justify-center p-3 gap-2 text-center pointer-events-none">
+<span class="material-symbols-outlined text-primary-fixed text-[36px] opacity-75">qr_code_2</span>
+<span class="font-label-sm text-label-sm text-on-primary-container leading-tight">Cocokkan QR Papan Pos</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-center text-on-primary-container px-space-sm max-w-xs leading-relaxed">
+        Arahkan kamera ke QR Code di tiang papan pos resmi atau dasbor basecamp.
+      </p>
+<!-- Scanner Utility Buttons -->
+<div class="w-full grid grid-cols-2 gap-space-sm z-10 pt-space-xs">
+<button class="h-11 px-3 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center gap-1.5 transition-transform active:scale-95" id="torch-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">flashlight_on</span>
+<span>Nyalakan Senter</span>
+</button>
+<button class="h-11 px-3 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md flex items-center justify-center gap-1.5 transition-transform active:scale-95" id="manual-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">keyboard</span>
+<span>Manual (RNJ-03)</span>
+</button>
+</div>
+</div>
+<!-- Two-Step Verification Form Container -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">Alur Verifikasi SOP</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Validasi &amp; Catat Sampah</h3>
+</div>
+<div class="flex items-center gap-1 text-on-tertiary-container bg-tertiary-fixed px-2.5 py-1 rounded-full font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">stars</span>
+<span>+330 Poin</span>
+</div>
+</div>
+<!-- Step 1: Telemetry Verification -->
+<div class="bg-surface-container rounded-lg p-space-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md font-bold">Langkah 1: Telemetri Valid</span>
+</div>
+<span class="font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed-variant px-2 py-0.5 rounded-full font-bold">Terkonfirmasi</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm pt-1">
+<div class="flex items-center gap-2 bg-surface-container-lowest/80 p-2 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[20px]">schedule</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Timestamp</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">14:32 WIB</span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest/80 p-2 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[20px]">elevation</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Elevasi Pos</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">2.631 mdpl</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 2: Scale Input Metrics -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+<span class="font-label-md text-label-md font-bold">Langkah 2: Timbangan Fisik Kantong</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Standar TNGR</span>
+</div>
+<!-- Input Item 1: Plastik -->
+<div class="flex items-center justify-between bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">water_bottle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Botol PET / Plastik</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Anorganik ringkas</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-lowest px-2 py-1 rounded-lg shadow-sm">
+<input aria-label="Bobot botol PET" class="w-12 text-center font-headline-sm text-headline-sm text-primary bg-transparent focus:outline-none" id="input-pet" step="0.1" type="number" value="1.8"/>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold">kg</span>
+</div>
+</div>
+<!-- Input Item 2: Logam / Kaleng -->
+<div class="flex items-center justify-between bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">takeout_dining</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Kaleng &amp; Logam Gas</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Daur ulang padat</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-lowest px-2 py-1 rounded-lg shadow-sm">
+<input aria-label="Bobot kaleng dan logam" class="w-12 text-center font-headline-sm text-headline-sm text-primary bg-transparent focus:outline-none" id="input-can" step="0.1" type="number" value="0.6"/>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold">kg</span>
+</div>
+</div>
+<!-- Input Item 3: Residu -->
+<div class="flex items-center justify-between bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">delete_sweep</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Residu &amp; Lainnya</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Kemasan multilayer</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-lowest px-2 py-1 rounded-lg shadow-sm">
+<input aria-label="Bobot sampah residu" class="w-12 text-center font-headline-sm text-headline-sm text-primary bg-transparent focus:outline-none" id="input-res" step="0.1" type="number" value="0.9"/>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold">kg</span>
+</div>
+</div>
+<!-- Total Indicator Bar -->
+<div class="flex items-center justify-between bg-primary-container text-on-primary px-space-md py- space-sm py-2.5 rounded-lg mt-space-xs shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary-fixed">inventory_2</span>
+<span class="font-label-lg text-label-lg font-semibold">Total Bobot Bersih</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-stat-counter text-stat-counter text-secondary-fixed" id="total-weight">3.3</span>
+<span class="font-label-md text-label-md text-on-primary-container">kg</span>
+</div>
+</div>
+</div>
+<!-- Main Action Validation CTA -->
+<button class="w-full h-12 bg-secondary hover:bg-primary text-on-secondary rounded-xl font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.98]" id="validate-btn" type="button">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+<span>Konfirmasi &amp; Validasi Petugas</span>
+</button>
+</div>
+<!-- Checkpoint Ranger Verification Visual Banner -->
+<div class="rounded-xl overflow-hidden shadow-md relative h-36 bg-surface-container-high flex flex-col justify-end p-space-md">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="An Indonesian national park ranger at Mount Rinjani Basecamp Sembalun holding a digital tablet and inspecting a recycled outdoor trash bag, warm morning sunlight, lush pine trees and mountain ridge in background, authentic documentary style, clean eco-adventure gear aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_h_muWwOsBMbg5TiHj9P3M5vkewT9NkOdX8bAsIfnRnQtSkznkDouRqi6lmdk8QBs3FTa--yBIruafU7dXtBAzlz4UiD5jArLnbvCV7m3gV2n5uE_NLoMeE_VBfhZjg8VQ2qqazZnDG_cyhWIx8Z_5L793VfIXbwjOdXh5YeYTYCALW2J-4WXRXJvX_Zdha_9sRmV5rAJqdNN5HoRLuuftyGM-3GUXOvy-qjf5RdKgTzf3hhjtLBYOQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+<div class="relative z-10 flex items-center justify-between text-on-primary">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary-fixed">Petugas Jaga Aktif</span>
+<span class="font-headline-sm text-headline-sm">Ranger Wahyu Pratama</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest/20 backdrop-blur-md flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[22px]">badge</span>
+</div>
+</div>
+</div>
+<!-- Recent History List Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-headline-sm text-primary">Riwayat Checkpoint Terakhir</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Bulan Ini</span>
+</div>
+<div class="flex flex-col gap-space-xs mt-1">
+<!-- History Item 1 -->
+<div class="flex items-center justify-between p- space-sm p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/60 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Basecamp Sembalun</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">2.5 kg diverifikasi TNGR • 12 Okt 2026</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-secondary font-bold shrink-0 ml-2">+250 Pts</span>
+</div>
+<!-- History Item 2 -->
+<div class="flex items-center justify-between p- space-sm p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/60 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Pos 2 Kandang Badak</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">1.2 kg terverifikasi Gede Pangrango</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-secondary font-bold shrink-0 ml-2">+120 Pts</span>
+</div>
+</div>
+</div>
+<!-- Regulatory Advisory Notice -->
+<div class="bg-error-container/40 rounded-xl p-space-md flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-error-container flex items-center justify-center text-error shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">policy</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md text-on-error-container font-bold">Peringatan: Go Rinjani Zero Waste</span>
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+          Semua kantong logistik yang dibawa naik wajib diverifikasi kembali saat turun. Pendaki yang meninggalkan sampah dikenakan sanksi blacklist nasional selama 2 tahun.
+        </p>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Dynamic recalculation of garbage weight
+    const inputPet = document.getElementById('input-pet');
+    const inputCan = document.getElementById('input-can');
+    const inputRes = document.getElementById('input-res');
+    const totalEl = document.getElementById('total-weight');
+
+    function updateTotal() {
+      const v1 = parseFloat(inputPet.value) || 0;
+      const v2 = parseFloat(inputCan.value) || 0;
+      const v3 = parseFloat(inputRes.value) || 0;
+      totalEl.textContent = (v1 + v2 + v3).toFixed(1);
+    }
+
+    if (inputPet && inputCan && inputRes) {
+      inputPet.addEventListener('input', updateTotal);
+      inputCan.addEventListener('input', updateTotal);
+      inputRes.addEventListener('input', updateTotal);
+    }
+
+    // Viewfinder laser scanner pulse
+    const laser = document.getElementById('scan-laser');
+    let scanDirection = 1;
+    let scanPos = 16;
+    if (laser) {
+      setInterval(() => {
+        scanPos += 3 * scanDirection;
+        if (scanPos > 240) scanDirection = -1;
+        if (scanPos < 16) scanDirection = 1;
+        laser.style.top = scanPos + 'px';
+      }, 30);
+    }
+
+    // Interactive button feedback
+    const torchBtn = document.getElementById('torch-btn');
+    if (torchBtn) {
+      let isTorchOn = false;
+      torchBtn.addEventListener('click', () => {
+        isTorchOn = !isTorchOn;
+        torchBtn.classList.toggle('bg-secondary-fixed');
+        torchBtn.classList.toggle('text-on-secondary-fixed');
+        torchBtn.classList.toggle('bg-primary-container');
+        torchBtn.classList.toggle('text-on-primary');
+        const spanText = torchBtn.querySelector('span:last-child');
+        if (spanText) {
+          spanText.textContent = isTorchOn ? 'Senter Aktif' : 'Nyalakan Senter';
+        }
+      });
+    }
+
+    const validateBtn = document.getElementById('validate-btn');
+    if (validateBtn) {
+      validateBtn.addEventListener('click', () => {
+        validateBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">sync</span> Validasi Petugas Terhubung...';
+        setTimeout(() => {
+          validateBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check_circle</span> Sampah Diverifikasi! (+330 Pts)';
+          validateBtn.classList.remove('bg-secondary');
+          validateBtn.classList.add('bg-primary-container');
+        }, 1200);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(27,67,50,0.06)]" data-active-classes="text-secondary font-semibold"><div class="flex justify-around items-center h-20 px-space-xs max-w-md mx-auto"><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-14 text-on-surface-variant transition-colors" data-path="beranda" href="#"><span class="material-symbols-outlined text-[24px]">forest</span><span class="font-label-sm text-label-sm">Beranda</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-14 transition-colors text-secondary font-semibold" data-path="checkpoint" href="#"><span class="material-symbols-outlined text-[24px]">qr_code_scanner</span><span class="font-label-sm text-label-sm">Checkpoint</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-14 text-on-surface-variant transition-colors" data-path="pasar-alat" href="#"><span class="material-symbols-outlined text-[24px]">swap_driving_apps_wheel</span><span class="font-label-sm text-label-sm">Pasar Alat</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-14 text-on-surface-variant transition-colors" data-path="gunung-&amp;-trip" href="#"><span class="material-symbols-outlined text-[24px]">landscape</span><span class="font-label-sm text-label-sm">Gunung &amp; Trip</span></a></div></nav></body></html>
