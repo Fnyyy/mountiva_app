@@ -20,15 +20,15 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="fixed top-0 inset-x-0 z-40 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(27,67,50,0.06)] pt-safe">
       <div className="h-16 px-4 flex items-center justify-between gap-2 max-w-md mx-auto">
         {/* Brand Logo & Name */}
-        <div className="flex items-center gap-1.5 cursor-pointer">
+        <div className="flex items-center gap-2 cursor-pointer select-none">
           <img
             alt="MounTiva Logo"
-            className="h-8 w-auto object-contain"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo0zEJcQ44ov0cNNLMHLAiAJyFzCfN6P4fHXV_ylpevwZoCXm-DCNEDvgR813SmTUT64-8C6OEM3ySv7JSuFaXWk8iHfA7e8lb1Z6nK6ku8m1yQ0xQEdsCUXZrzCPKgIf2H6Ts9uJYoV1IDipe67jmzzdUIPLWBRI2zZ9t9bNv1TAe0MWmHl1NkSeBgQvuh1PPDq_pdDUNmlEYYh-d0P1b_pCKLw11CV3d7G3JbGQdhYoM5JBDqh2DGw"
+            className="h-9 w-auto object-contain drop-shadow-sm transition-transform hover:scale-105"
+            src="/logo.png"
             onError={(e) => {
-              // Graceful SVG fallback if external image fails
+              // Graceful fallback if needed
               const target = e.currentTarget;
-              target.style.display = 'none';
+              target.src = '/logo-full.png';
             }}
           />
           <div className="flex flex-col">
