@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { calculateTotalWeight, WasteBatch } from '../../utils/ecoTracker';
 import { CheckpointHistoryItem } from '../../types';
 
@@ -24,6 +24,217 @@ export const CheckpointScreen: React.FC<CheckpointScreenProps> = ({
   const [manualCodeModal, setManualCodeModal] = useState(false);
   const [manualInput, setManualInput] = useState('RNJ-03-SEM');
   const [qrScannedAlert, setQrScannedAlert] = useState<string | null>(null);
+
+  // Live Camera states & refs
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+  const [cameraActive, setCameraActive] = useState(false);
+  const [cameraLoading, setCameraLoading] = useState(false);
+  const [cameraError, setCameraError] = useState<string | null>(null);
+  const [facingMode, setFacingMode] = useState<'environment' | 'user'>('environment');
+  const [hasTorchSupport, setHasTorchSupport] = useState(false);
+  const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
+
+  // Play subtle feedback beep
+  const playBeep = () => {
+    try {
+      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(880, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(1760, ctx.currentTime + 0.12);
+      gain.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.12);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.12);
+    } catch {
+      // AudioContext unavailable
+    }
+  };
+
+  // Start Live Camera
+  const startCamera = async (requestedFacing?: 'environment' | 'user') => {
+    setCameraLoading(true);
+    setCameraError(null);
+
+    // Stop existing stream first
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach((t) => t.stop());
+      streamRef.current = null;
+    }
+
+    const mode = requestedFacing || facingMode;
+
+    try {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        throw new Error('Peramban tidak mendukung akses kamera langsung.');
+      }
+
+      let stream: MediaStream;
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            facingMode: { ideal: mode },
+            width: { ideal: 1280 },
+            height: { ideal: 720 },
+          },
+          audio: false,
+        });
+      } catch {
+        // Fallback for laptops/webcams where facingMode ideal fails
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: false,
+        });
+      }
+
+      streamRef.current = stream;
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        await videoRef.current.play().catch(() => {});
+      }
+
+      // Check torch support
+      const track = stream.getVideoTracks()[0];
+      if (track && typeof track.getCapabilities === 'function') {
+        const caps = (track.getCapabilities() as any) || {};
+        setHasTorchSupport(Boolean(caps.torch));
+      }
+
+      setCameraActive(true);
+    } catch (err: any) {
+      console.warn('Camera access error:', err);
+      const isDenied =
+        err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError';
+      const isNotFound =
+        err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError';
+      setCameraError(
+        isDenied
+          ? 'Izin kamera ditolak. Klik izinkan pada peramban untuk mengaktifkan video feed.'
+          : isNotFound
+          ? 'Tidak ada kamera terhubung pada perangkat ini.'
+          : 'Kamera tidak dapat diakses saat ini.'
+      );
+      setCameraActive(false);
+    } finally {
+      setCameraLoading(false);
+    }
+  };
+
+  // Stop Live Camera
+  const stopCamera = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach((track) => track.stop());
+      streamRef.current = null;
+    }
+    if (videoRef.current) {
+      videoRef.current.srcObject = null;
+    }
+    setCameraActive(false);
+    setIsTorchOn(false);
+  };
+
+  // Flip Camera between Front / Rear
+  const toggleFacingMode = () => {
+    const nextMode = facingMode === 'environment' ? 'user' : 'environment';
+    setFacingMode(nextMode);
+    startCamera(nextMode);
+  };
+
+  // Toggle Torch
+  const toggleTorch = async () => {
+    const nextTorch = !isTorchOn;
+    const track = streamRef.current?.getVideoTracks()[0];
+    if (track && typeof (track as any).applyConstraints === 'function') {
+      try {
+        await (track as any).applyConstraints({
+          advanced: [{ torch: nextTorch }],
+        });
+        setIsTorchOn(nextTorch);
+      } catch {
+        setIsTorchOn(nextTorch);
+      }
+    } else {
+      setIsTorchOn(nextTorch);
+    }
+  };
+
+  // Capture Proof Snapshot from camera video feed
+  const handleCapturePhoto = () => {
+    if (!videoRef.current) return;
+    const video = videoRef.current;
+    const canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth || 640;
+    canvas.height = video.videoHeight || 480;
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+      setCapturedPhoto(dataUrl);
+      playBeep();
+      if ('vibrate' in navigator) navigator.vibrate(100);
+      setQrScannedAlert('📸 Foto bukti timbang sampah pos 3 tersimpan!');
+      setTimeout(() => setQrScannedAlert(null), 4000);
+    }
+  };
+
+  // QR / Barcode Scan Handler
+  const handleQrDetected = (code: string) => {
+    playBeep();
+    if ('vibrate' in navigator) navigator.vibrate([100, 60, 120]);
+    setQrScannedAlert(`✅ QR Terverifikasi: ${code} - Pos 3 Sembalun Terhubung!`);
+    setIsScanning(false);
+    setTimeout(() => setIsScanning(true), 6000);
+    setTimeout(() => setQrScannedAlert(null), 5000);
+  };
+
+  // Start camera on mount, stop on unmount
+  useEffect(() => {
+    startCamera();
+    return () => {
+      stopCamera();
+    };
+  }, []);
+
+  // Web BarcodeDetector continuous detection loop
+  useEffect(() => {
+    if (!cameraActive) return;
+    let animId: number;
+    let detector: any = null;
+
+    if ('BarcodeDetector' in window) {
+      try {
+        detector = new (window as any).BarcodeDetector({
+          formats: ['qr_code', 'code_128', 'ean_13', 'data_matrix'],
+        });
+      } catch {
+        detector = null;
+      }
+    }
+
+    const checkBarcode = async () => {
+      if (videoRef.current && detector && videoRef.current.readyState >= 2 && isScanning) {
+        try {
+          const results = await detector.detect(videoRef.current);
+          if (results && results.length > 0) {
+            const raw = results[0].rawValue || 'RNJ-03-SEM';
+            handleQrDetected(raw);
+          }
+        } catch {
+          // ignore detector frame errors
+        }
+      }
+      animId = requestAnimationFrame(checkBarcode);
+    };
+
+    animId = requestAnimationFrame(checkBarcode);
+    return () => cancelAnimationFrame(animId);
+  }, [cameraActive, isScanning]);
 
   // Animated laser scan movement
   useEffect(() => {
@@ -54,8 +265,7 @@ export const CheckpointScreen: React.FC<CheckpointScreenProps> = ({
   const handleManualSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setManualCodeModal(false);
-    setQrScannedAlert(`Pos Valid: ${manualInput.toUpperCase()} berhasil terhubung!`);
-    setTimeout(() => setQrScannedAlert(null), 4000);
+    handleQrDetected(manualInput.toUpperCase());
   };
 
   return (
@@ -104,75 +314,191 @@ export const CheckpointScreen: React.FC<CheckpointScreenProps> = ({
               qr_code_scanner
             </span>
             <span className="text-label-lg text-primary-fixed font-bold">
-              Eco-Scanner Otomatis
+              Eco-Scanner Kamera
             </span>
           </div>
-          <span className="text-label-sm bg-primary-container text-secondary-fixed-dim px-2 py-0.5 rounded-full font-semibold">
-            {isTorchOn ? 'Flashlight On' : 'Camera Feed Ready'}
-          </span>
+
+          <div className="flex items-center gap-1.5">
+            {cameraActive && (
+              <button
+                type="button"
+                onClick={toggleFacingMode}
+                title="Ganti Kamera Depan / Belakang"
+                className="w-7 h-7 rounded-full bg-primary-container/80 hover:bg-primary-container text-secondary-fixed flex items-center justify-center transition-transform active:scale-90"
+              >
+                <span className="material-symbols-outlined text-[16px]">flip_camera_ios</span>
+              </button>
+            )}
+            <span className="text-label-sm bg-primary-container text-secondary-fixed-dim px-2 py-0.5 rounded-full font-semibold flex items-center gap-1">
+              <span
+                className={`w-1.5 h-1.5 rounded-full ${
+                  cameraActive ? 'bg-secondary-fixed animate-ping' : 'bg-tertiary-fixed-dim'
+                }`}
+              />
+              <span>
+                {cameraLoading
+                  ? 'Menghubungkan...'
+                  : cameraActive
+                  ? isTorchOn
+                    ? 'Senter Aktif'
+                    : 'Kamera Live'
+                  : 'Kamera Standby'}
+              </span>
+            </span>
+          </div>
         </div>
 
         {/* Viewfinder Target Area */}
-        <div className="relative w-64 h-64 rounded-xl bg-surface-container-lowest/5 backdrop-blur-sm flex items-center justify-center overflow-hidden my-1">
-          {/* Animated Corner Brackets */}
-          <div className="absolute top-2 left-2 w-6 h-6 border-t-4 border-l-4 border-secondary-fixed rounded-tl-lg" />
-          <div className="absolute top-2 right-2 w-6 h-6 border-t-4 border-r-4 border-secondary-fixed rounded-tr-lg" />
-          <div className="absolute bottom-2 left-2 w-6 h-6 border-b-4 border-l-4 border-secondary-fixed rounded-bl-lg" />
-          <div className="absolute bottom-2 right-2 w-6 h-6 border-b-4 border-r-4 border-secondary-fixed rounded-br-lg" />
-
-          {/* Laser Scanner Bar Animation */}
-          <div
-            className="absolute inset-x-3 h-0.5 bg-gradient-to-r from-transparent via-tertiary-fixed-dim to-transparent shadow-[0_0_12px_#ffb959] transition-all duration-75"
-            style={{ top: `${laserPos}px` }}
+        <div className="relative w-64 h-64 rounded-xl bg-black/90 flex items-center justify-center overflow-hidden my-1 shadow-inner border border-secondary/30">
+          {/* Live Video Feed */}
+          <video
+            ref={videoRef}
+            autoPlay
+            playsInline
+            muted
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+              cameraActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
           />
 
-          {/* Target Grid Silhouette */}
-          <div className="w-40 h-40 rounded-lg bg-surface-container-lowest/10 flex flex-col items-center justify-center p-3 gap-2 text-center pointer-events-none">
-            <span className="material-symbols-outlined text-primary-fixed text-[36px] opacity-75">
-              qr_code_2
-            </span>
-            <span className="text-label-sm text-on-primary-container leading-tight font-medium">
-              Cocokkan QR Papan Pos
-            </span>
-          </div>
+          {/* Fallback / Inactive State */}
+          {!cameraActive && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-gradient-to-b from-primary-container/60 to-primary/95 z-0">
+              <span className="material-symbols-outlined text-secondary-fixed text-[44px] mb-2 opacity-90 animate-bounce">
+                photo_camera
+              </span>
+              <p className="text-label-sm text-on-primary-container px-2 mb-3 leading-snug">
+                {cameraError || 'Kamera siap dihubungkan untuk memindai QR pos & mengambil foto sampah.'}
+              </p>
+              <div className="flex flex-col gap-2 w-full max-w-[190px]">
+                <button
+                  type="button"
+                  onClick={() => startCamera()}
+                  className="w-full h-9 rounded-lg bg-secondary text-on-secondary text-label-sm font-bold flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-all"
+                >
+                  <span className="material-symbols-outlined text-[16px]">videocam</span>
+                  <span>{cameraLoading ? 'Membuka...' : 'Buka Kamera'}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleQrDetected('RNJ-03-SEM')}
+                  className="w-full h-8 rounded-lg bg-white/10 hover:bg-white/20 text-on-primary text-label-sm font-semibold flex items-center justify-center gap-1 active:scale-95 transition-all"
+                >
+                  <span className="material-symbols-outlined text-[14px]">qr_code_2</span>
+                  <span>Simulasi Scan QR</span>
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Animated Corner Brackets */}
+          <div className="absolute top-2 left-2 w-6 h-6 border-t-4 border-l-4 border-secondary-fixed rounded-tl-lg pointer-events-none z-10" />
+          <div className="absolute top-2 right-2 w-6 h-6 border-t-4 border-r-4 border-secondary-fixed rounded-tr-lg pointer-events-none z-10" />
+          <div className="absolute bottom-2 left-2 w-6 h-6 border-b-4 border-l-4 border-secondary-fixed rounded-bl-lg pointer-events-none z-10" />
+          <div className="absolute bottom-2 right-2 w-6 h-6 border-b-4 border-r-4 border-secondary-fixed rounded-br-lg pointer-events-none z-10" />
+
+          {/* Laser Scanner Bar Animation */}
+          {isScanning && cameraActive && (
+            <div
+              className="absolute inset-x-3 h-0.5 bg-gradient-to-r from-transparent via-tertiary-fixed-dim to-transparent shadow-[0_0_12px_#ffb959] transition-all duration-75 pointer-events-none z-10"
+              style={{ top: `${laserPos}px` }}
+            />
+          )}
+
+          {/* Target Reticle Silhouette */}
+          {cameraActive && (
+            <div className="w-36 h-36 rounded-xl border border-dashed border-white/50 flex flex-col items-center justify-center p-2 text-center pointer-events-none z-10 bg-black/20 backdrop-blur-[1px]">
+              <span className="material-symbols-outlined text-white/90 text-[32px] drop-shadow">
+                qr_code_2
+              </span>
+              <span className="text-[11px] text-white/90 leading-tight font-medium drop-shadow mt-1">
+                Arahkan ke QR Pos
+              </span>
+            </div>
+          )}
         </div>
 
         {qrScannedAlert && (
-          <div className="w-full bg-secondary-container text-on-secondary-container px-3 py-1.5 rounded-lg text-label-sm font-bold text-center animate-fadeIn">
-            {qrScannedAlert}
+          <div className="w-full bg-secondary-container text-on-secondary-container px-3 py-1.5 rounded-lg text-label-sm font-bold text-center animate-fadeIn shadow-sm flex items-center justify-center gap-1.5">
+            <span className="material-symbols-outlined text-[16px]">verified</span>
+            <span>{qrScannedAlert}</span>
           </div>
         )}
 
         <p className="text-body-sm text-center text-on-primary-container px-2 max-w-xs leading-relaxed">
-          Arahkan kamera ke QR Code di tiang papan pos resmi atau dasbor basecamp.
+          {cameraActive
+            ? 'Arahkan kamera ke QR Code di tiang pos atau jepret foto sampah Anda.'
+            : 'Aktifkan kamera untuk validasi otomatis atau masukkan kode pos manual.'}
         </p>
 
         {/* Scanner Utility Buttons */}
-        <div className="w-full grid grid-cols-2 gap-2 z-10 pt-1">
+        <div className="w-full grid grid-cols-3 gap-2 z-10 pt-1">
+          {/* Torch Toggle Button */}
           <button
             type="button"
-            onClick={() => setIsTorchOn(!isTorchOn)}
-            className={`h-11 px-3 rounded-lg font-label-md flex items-center justify-center gap-1.5 transition-all active:scale-95 ${
+            onClick={toggleTorch}
+            className={`h-11 px-2 rounded-lg font-label-md flex items-center justify-center gap-1 transition-all active:scale-95 text-xs ${
               isTorchOn
                 ? 'bg-secondary-fixed text-on-secondary-fixed font-bold'
-                : 'bg-primary-container text-on-primary'
+                : 'bg-primary-container text-on-primary hover:bg-primary-container/80'
             }`}
           >
             <span className="material-symbols-outlined text-[18px]">
               {isTorchOn ? 'flashlight_off' : 'flashlight_on'}
             </span>
-            <span>{isTorchOn ? 'Senter Aktif' : 'Nyalakan Senter'}</span>
+            <span>{isTorchOn ? 'Senter Aktif' : 'Senter'}</span>
           </button>
 
+          {/* Snapshot Button */}
+          <button
+            type="button"
+            onClick={cameraActive ? handleCapturePhoto : () => startCamera()}
+            className="h-11 px-2 rounded-lg bg-tertiary-fixed-dim hover:bg-tertiary-fixed text-on-tertiary-fixed font-label-md font-bold flex items-center justify-center gap-1 transition-transform active:scale-95 text-xs shadow-sm"
+          >
+            <span className="material-symbols-outlined text-[18px]">photo_camera</span>
+            <span>{cameraActive ? 'Jepret Foto' : 'Buka Kamera'}</span>
+          </button>
+
+          {/* Manual Entry or Simulate Scan */}
           <button
             type="button"
             onClick={() => setManualCodeModal(true)}
-            className="h-11 px-3 rounded-lg bg-secondary hover:bg-secondary/90 text-on-secondary font-label-md flex items-center justify-center gap-1.5 transition-transform active:scale-95"
+            className="h-11 px-2 rounded-lg bg-secondary hover:bg-secondary/90 text-on-secondary font-label-md flex items-center justify-center gap-1 transition-transform active:scale-95 text-xs font-semibold"
           >
             <span className="material-symbols-outlined text-[18px]">keyboard</span>
-            <span>Manual (RNJ-03)</span>
+            <span>Kode Manual</span>
           </button>
         </div>
+
+        {/* Captured Photo Evidence Preview */}
+        {capturedPhoto && (
+          <div className="w-full bg-surface-container-lowest/15 border border-white/20 rounded-xl p-3 flex items-center justify-between gap-3 animate-fadeIn mt-1">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <img
+                src={capturedPhoto}
+                alt="Bukti Foto Sampah"
+                className="w-12 h-12 rounded-lg object-cover border border-secondary shadow-sm shrink-0"
+              />
+              <div className="flex flex-col min-w-0">
+                <div className="flex items-center gap-1 text-secondary-fixed text-label-sm font-bold">
+                  <span className="material-symbols-outlined text-[14px]">check_circle</span>
+                  <span>Bukti Foto Terlampir</span>
+                </div>
+                <span className="text-body-sm text-on-primary-container truncate text-[11px]">
+                  Terverifikasi pos lapangan
+                </span>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setCapturedPhoto(null)}
+              className="text-on-primary-container hover:text-white text-xs px-2 py-1 rounded bg-white/10 shrink-0"
+              title="Hapus foto"
+            >
+              Hapus
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Two-Step Verification Form Container */}
